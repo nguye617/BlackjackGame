@@ -6,8 +6,41 @@ package blackjack.model;
 
 /**
  *
- * @author RAM
+ * @author Dong Nguyen
  */
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
-    
+    private List<Card> hand;
+
+    public Player() {
+        hand = new ArrayList<>();
+    }
+
+    public void addCard(Card card) {
+        hand.add(card);
+    }
+
+    public int calculateHandValue() {
+        int value = 0;
+        int aces = 0;
+
+        for (Card card : hand) {
+            int cardValue = card.getValue();
+            if (cardValue > 10) cardValue = 10;
+            if (cardValue == 1) aces++;
+            value += cardValue;
+        }
+
+        while (aces > 0 && value <= 11) {
+            value += 10;
+            aces--;
+        }
+        return value;
+    }
+
+    public boolean isBust() {
+        return calculateHandValue() > 21;
+    }
 }
