@@ -32,6 +32,10 @@ public class Deck {
     }
 
     public Card dealCard() {
+        if (cards.isEmpty()) {
+            System.out.println("The deck is empty! Reshuffling...");
+        
+        
         return cards.remove(0);
     }
 }

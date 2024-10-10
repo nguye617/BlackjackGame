@@ -26,4 +26,10 @@ public class Card {
         return value;
     }
     
+    @Override
+    public String toString() {
+        String[] valueNames = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+        return valueNames[value - 1] + " of " + suit;
+    }
+    
 }
